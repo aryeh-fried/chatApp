@@ -89,11 +89,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\projects\\chatApp\\Server\\ChatApp.Api\\ChatApp.Api.csproj",
+      "projectUniqueName": "C:\\Users\\user\\projects\\chatApp\\server\\chatApp.Api\\ChatApp.Api.csproj",
       "projectName": "ChatApp.Api",
-      "projectPath": "C:\\Users\\user\\projects\\chatApp\\Server\\ChatApp.Api\\ChatApp.Api.csproj",
+      "projectPath": "C:\\Users\\user\\projects\\chatApp\\server\\chatApp.Api\\ChatApp.Api.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\projects\\chatApp\\Server\\ChatApp.Api\\obj\\",
+      "outputPath": "C:\\Users\\user\\projects\\chatApp\\server\\chatApp.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

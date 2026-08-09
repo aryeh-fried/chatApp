@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4msMPyK77Ec=",
+  "dgSpecHash": "Ig2ZV+cIC1s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\projects\\chatApp\\Server\\ChatApp.Api\\ChatApp.Api.csproj",
+  "projectFilePath": "C:\\Users\\user\\projects\\chatApp\\server\\chatApp.Api\\ChatApp.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.10\\microsoft.aspnetcore.openapi.10.0.10.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
@@ -12,9 +12,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "C:\\Users\\user\\projects\\chatApp\\Server\\ChatApp.Api\\ChatApp.Api.csproj",
+      "projectPath": "C:\\Users\\user\\projects\\chatApp\\server\\chatApp.Api\\ChatApp.Api.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\user\\projects\\chatApp\\Server\\ChatApp.Api\\ChatApp.Api.csproj",
+      "filePath": "C:\\Users\\user\\projects\\chatApp\\server\\chatApp.Api\\ChatApp.Api.csproj",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"
