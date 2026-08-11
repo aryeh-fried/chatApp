@@ -1,4 +1,5 @@
 using ChatApp.Api.Models;
+using ChatApp.Api.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChatApp.Api.Controllers;
@@ -35,10 +36,16 @@ public class UsersController : ControllerBase
         return user;
     }
     [HttpPost]
-    public ActionResult<User> CreateUser(User AddUser)
+    public ActionResult<User> CreateUser(CreateUserDto AddUser)
     {
-        AddUser.Id = _users.Max(u => u.Id) + 1;
-        _users.Add(AddUser);
-        return CreatedAtAction(nameof(GetUser), new { id = AddUser.Id }, AddUser);
+        var newId = _users.Max(u => u.Id) + 1;
+        _users.Add(new User
+        {
+            Id = newId,
+            UserName = AddUser.UserName,
+            Email = AddUser.Email,
+            Password = AddUser.Password
+        });
+        return CreatedAtAction(nameof(GetUser), new { id = newId}, AddUser);
     }
 }   
