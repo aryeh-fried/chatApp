@@ -1,0 +1,21 @@
+@baseUrl = http://localhost:5202
+
+### Get all users
+GET {{baseUrl}}/api/users
+
+### Get user by id
+GET {{baseUrl}}/api/users/1
+
+### Get user that doesn't exist
+GET {{baseUrl}}/api/users/999
+
+### Create user
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+  "id": 7,
+  "userName": "Aryeh",
+  "email": "",
+  "password": "1234"
+}
