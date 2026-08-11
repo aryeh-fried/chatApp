@@ -1,6 +1,7 @@
 using ChatApp.Api.Models;
 using ChatApp.Api.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using ChatApp.Api.Services;
 
 namespace ChatApp.Api.Controllers;
 
@@ -8,6 +9,11 @@ namespace ChatApp.Api.Controllers;
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
+    public UsersController(IUserService userService)
+    {
+        _userService = userService;
+    }
+    private readonly IUserService _userService;
     private static readonly List<User> _users = new()
     {
         new() { Id = 1, UserName = "JohnDoe", Email = "john.doe@example.com", Password = "password" },
@@ -21,12 +27,12 @@ public class UsersController : ControllerBase
     public List<User> GetUsers()
     {
 
-        return _users;
+        return _userService.GetAllUsers();
     }
     [HttpGet("{id}")]
     public ActionResult<User> GetUser(int id)
     {
-        var user = _users.FirstOrDefault(u => u.Id == id);
+        var user = _userService.GetUserById(id);
         if (user == null)
         {
            return NotFound();
@@ -38,14 +44,7 @@ public class UsersController : ControllerBase
     [HttpPost]
     public ActionResult<User> CreateUser(CreateUserDto AddUser)
     {
-        var newId = _users.Max(u => u.Id) + 1;
-        _users.Add(new User
-        {
-            Id = newId,
-            UserName = AddUser.UserName,
-            Email = AddUser.Email,
-            Password = AddUser.Password
-        });
-        return CreatedAtAction(nameof(GetUser), new { id = newId}, AddUser);
+        var newUser = _userService.CreateUser(AddUser);
+        return CreatedAtAction(nameof(GetUser), new { id = newUser.Id }, newUser);
     }
 }   
