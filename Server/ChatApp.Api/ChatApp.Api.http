@@ -1,15 +1,15 @@
-@ChatApp.Api_HostAddress = http://localhost:5202
+@Api_HostAddress = http://localhost:5202
 
 ### Get all users
-GET {{ChatApp.Api_HostAddress}}/api/users
+GET {{Api_HostAddress}}/api/users
 Accept: application/json
 
 ### Get user by id
-GET {{ChatApp.Api_HostAddress}}/api/users/1
+GET {{Api_HostAddress}}/api/users/1
 Accept: application/json
 
 ### Create user
-POST {{ChatApp.Api_HostAddress}}/api/users
+POST {{Api_HostAddress}}/api/users
 Content-Type: application/json
 
 {

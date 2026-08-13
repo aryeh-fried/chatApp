@@ -1,5 +1,5 @@
 using ChatApp.Api.Models;
-using ChatApp.Api.DTOs;
+using ChatApp.Api.DTOs.Users;
 using Microsoft.AspNetCore.Mvc;
 using ChatApp.Api.Services;
 
@@ -13,7 +13,7 @@ public class UsersController : ControllerBase
     {
         _userService = userService;
     }
-    
+
     private readonly IUserService _userService;
    
 
