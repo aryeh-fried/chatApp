@@ -1,6 +1,21 @@
 @ChatApp.Api_HostAddress = http://localhost:5202
 
-GET {{ChatApp.Api_HostAddress}}/weatherforecast/
+### Get all users
+GET {{ChatApp.Api_HostAddress}}/api/users
 Accept: application/json
+
+### Get user by id
+GET {{ChatApp.Api_HostAddress}}/api/users/1
+Accept: application/json
+
+### Create user
+POST {{ChatApp.Api_HostAddress}}/api/users
+Content-Type: application/json
+
+{
+  "userName": "jhondoe",
+  "email": "john.doe@example.com",
+  "password": "11111"
+}
 
 ###
