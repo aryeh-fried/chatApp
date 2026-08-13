@@ -1,43 +1,40 @@
 using ChatApp.Api.Models;
 using ChatApp.Api.DTOs;
+using ChatApp.Api.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChatApp.Api.Services
 {
     public class UserService : IUserService
     {
-        private  readonly List<User> _users = new()
-    {
-        new() { Id = 1, UserName = "JohnDoe", Email = "john.doe@example.com", Password = "password" },
-        new() { Id = 2, UserName = "JaneSmith", Email = "jane.smith@example.com", Password = "password" },
-        new() { Id = 3, UserName = "AliceJones", Email = "alice.jones@example.com", Password = "password" },
-        new() { Id = 4, UserName = "BobBrown", Email = "bob.brown@example.com", Password = "password" },
-        new() { Id = 5, UserName = "CharlieBlack", Email = "charlie.black@example.com", Password = "password" }
-    };
-        public User CreateUser(CreateUserDto createUserDto)
+        private readonly ChatAppDbContext _context;
+
+        public UserService(ChatAppDbContext context)
         {
-            var newId = _users.Max(u => u.Id) + 1;
+            _context = context;
+        }
+
+        public async Task<User> CreateUser(CreateUserDto createUserDto)
+        {
             var newUser = new User
             {
-                Id = newId,
                 UserName = createUserDto.UserName,
                 Email = createUserDto.Email,
                 Password = createUserDto.Password
             };
-            _users.Add(newUser);
+            _context.Users.Add(newUser);
+            await _context.SaveChangesAsync();
             return newUser;
         }
 
-        public List<User> GetAllUsers()
+        public async Task<List<User>> GetAllUsers()
         {
-            return _users;
+            return await _context.Users.ToListAsync();
         }
-
-        public User? GetUserById(int id)
+       
+        public async Task<User?> GetUserById(int id)
         {
-            
-            return _users.FirstOrDefault(u => u.Id == id);
+            return await _context.Users.FindAsync(id);
         }
-
-        
     }
 }

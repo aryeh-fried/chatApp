@@ -24,15 +24,15 @@ public class UsersController : ControllerBase
     };
 
     [HttpGet]
-    public List<User> GetUsers()
+    public async Task<ActionResult<List<User>>> GetUsers()
     {
-
-        return _userService.GetAllUsers();
+        return await _userService.GetAllUsers();
     }
+    
     [HttpGet("{id}")]
-    public ActionResult<User> GetUser(int id)
+    public async Task<ActionResult<User>> GetUser(int id)
     {
-        var user = _userService.GetUserById(id);
+        var user = await _userService.GetUserById(id);
         if (user == null)
         {
            return NotFound();
@@ -42,9 +42,9 @@ public class UsersController : ControllerBase
         return user;
     }
     [HttpPost]
-    public ActionResult<User> CreateUser(CreateUserDto AddUser)
+    public async Task<ActionResult<User>> CreateUser(CreateUserDto AddUser)
     {
-        var newUser = _userService.CreateUser(AddUser);
+        var newUser = await _userService.CreateUser(AddUser);
         return CreatedAtAction(nameof(GetUser), new { id = newUser.Id }, newUser);
     }
 }   

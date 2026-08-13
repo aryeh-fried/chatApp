@@ -5,9 +5,9 @@ namespace ChatApp.Api.Services
 {
     public interface IUserService
     {
-       List<User> GetAllUsers();
-       User? GetUserById(int id);
-       User CreateUser(CreateUserDto createUserDto);
+       Task<List<User>> GetAllUsers();
+       Task<User?> GetUserById(int id);
+       Task<User> CreateUser(CreateUserDto createUserDto);
 
     }
 }
