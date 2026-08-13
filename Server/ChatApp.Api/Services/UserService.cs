@@ -1,5 +1,5 @@
 using ChatApp.Api.Models;
-using ChatApp.Api.DTOs;
+using ChatApp.Api.DTOs.Users;
 using ChatApp.Api.Data;
 using Microsoft.EntityFrameworkCore;
 

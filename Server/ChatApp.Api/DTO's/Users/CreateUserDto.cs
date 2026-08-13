@@ -1,4 +1,4 @@
-namespace ChatApp.Api.DTOs
+namespace ChatApp.Api.DTOs.Users
 {
     public class CreateUserDto
     {
