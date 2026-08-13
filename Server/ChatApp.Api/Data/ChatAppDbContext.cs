@@ -9,7 +9,8 @@ namespace ChatApp.Api.Data
         {
         }
 
-        public DbSet<User> Users { get; set; }
-        
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Conversation> Conversations { get; set; } = null!;
+        public DbSet<Message> Messages { get; set; } = null!;
     }
 }
