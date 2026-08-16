@@ -1,17 +1,17 @@
-@Api_HostAddress = http://localhost:5202
+@baseUrl = http://localhost:5202
 
 ### Users api's 
 
 ### Get all users
-GET {{Api_HostAddress}}/api/users
+GET {{baseUrl}}/api/users
 Accept: application/json
 
 ### Get user by id
-GET {{Api_HostAddress}}/api/users/1
+GET {{baseUrl}}/api/users/1
 Accept: application/json
 
 ### Create user
-POST {{Api_HostAddress}}/api/users
+POST {{baseUrl}}/api/users
 Content-Type: application/json
 
 {
@@ -19,22 +19,28 @@ Content-Type: application/json
   "email": "john.doe@example.com",
   "password": "11111"
 }
-### Conversations Api's 
+
+
+##################################################
+# Conversations API
+##################################################
 
 ### Get all conversations
-GET {{Api_HostAddress}}/api/conversations
-Accept: application/json
+GET {{baseUrl}}/api/conversations
 
-### Get conversation by id
-GET {{Api_HostAddress}}/api/conversations/1
-Accept: application/json
+
+### Get conversation by ID
+GET {{baseUrl}}/api/conversations/1
+
+
+### Get conversation that doesn't exist
+GET {{baseUrl}}/api/conversations/999
+
 
 ### Create conversation
-POST {{Api_HostAddress}}/api/conversations
+POST {{baseUrl}}/api/conversations
 Content-Type: application/json
 
 {
-  "name": "General"
+    "participantIds": [1, 2]
 }
-
-###
