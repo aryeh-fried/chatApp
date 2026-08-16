@@ -1,5 +1,7 @@
 @Api_HostAddress = http://localhost:5202
 
+### Users api's 
+
 ### Get all users
 GET {{Api_HostAddress}}/api/users
 Accept: application/json
@@ -16,6 +18,23 @@ Content-Type: application/json
   "userName": "jhondoe",
   "email": "john.doe@example.com",
   "password": "11111"
+}
+### Conversations Api's 
+
+### Get all conversations
+GET {{Api_HostAddress}}/api/conversations
+Accept: application/json
+
+### Get conversation by id
+GET {{Api_HostAddress}}/api/conversations/1
+Accept: application/json
+
+### Create conversation
+POST {{Api_HostAddress}}/api/conversations
+Content-Type: application/json
+
+{
+  "name": "General"
 }
 
 ###
