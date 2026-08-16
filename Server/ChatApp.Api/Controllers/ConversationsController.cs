@@ -30,9 +30,13 @@ public class ConversationsController(IConversationService conversationService) :
     }
 
     [HttpPost]
-    public async Task<ActionResult<Conversation>> CreateConversation(CreateConversationDto dto)
+    public async Task<ActionResult<CreateConversationDto?>> CreateConversation(CreateConversationDto dto)
     {
         var conversation = await _conversationService.CreateConversation(dto);
-        return CreatedAtAction(nameof(GetConversationById), new { id = conversation.Id }, conversation);
+        if (conversation == null)
+        {
+            return BadRequest("Failed to create conversation.");
+        }
+        return CreatedAtAction(nameof(GetConversationById), new { id = conversation.Id }, dto);
     }
 }

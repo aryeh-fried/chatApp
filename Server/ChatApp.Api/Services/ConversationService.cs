@@ -21,12 +21,16 @@ namespace ChatApp.Api.Services
             .FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<Conversation> CreateConversation(CreateConversationDto dto)
+        public async Task<Conversation?> CreateConversation(CreateConversationDto dto)
         {
              var participants = await _context.Users
             .Where(u => dto.ParticipantIds.Contains(u.Id))
             .ToListAsync();
-
+        
+            if(participants.Count != dto.ParticipantIds.Count)
+            {
+                return null; // or throw an exception, depending on your error handling strategy
+            }
             var conversation = new Conversation
             {
                 Participants = participants
