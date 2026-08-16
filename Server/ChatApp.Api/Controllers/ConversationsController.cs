@@ -2,6 +2,7 @@ using ChatApp.Api.Models;
 using ChatApp.Api.DTOs.Users;
 using Microsoft.AspNetCore.Mvc;
 using ChatApp.Api.Services;
+using ChatApp.Api.DTOs.Conversations;
 
 namespace ChatApp.Api.Controllers;
 
@@ -19,7 +20,7 @@ public class ConversationsController(IConversationService conversationService) :
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Conversation?>> GetConversationById(int id)
+    public async Task<ActionResult<ConversationDto?>> GetConversationById(int id)
     {
         var conversation = await _conversationService.GetConversationById(id);
         if (conversation == null)

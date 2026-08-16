@@ -1,4 +1,6 @@
 using ChatApp.Api.Data;
+using ChatApp.Api.DTOs.Conversations;
+using ChatApp.Api.DTOs.Users;
 using ChatApp.Api.Models;
 using Microsoft.EntityFrameworkCore;
 namespace ChatApp.Api.Services
@@ -14,11 +16,26 @@ namespace ChatApp.Api.Services
             .ToListAsync();
         }
 
-        public async Task<Conversation?> GetConversationById(int id)
+        public async Task<ConversationDto?> GetConversationById(int id)
         {
-            return await _context.Conversations
+            var conversation = await _context.Conversations
             .Include(c => c.Participants)
             .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (conversation == null)
+            {
+                return null;
+            }
+            var conversationDto = new ConversationDto
+            {
+                Id = conversation.Id,
+                Participants = conversation.Participants.Select(p => new UserDto
+                {
+                    Id = p.Id,
+                    UserName = p.UserName
+                }).ToList()
+            };
+            return conversationDto;
         }
 
         public async Task<Conversation?> CreateConversation(CreateConversationDto dto)
