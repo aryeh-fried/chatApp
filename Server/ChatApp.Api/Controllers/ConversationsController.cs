@@ -13,7 +13,7 @@ public class ConversationsController(IConversationService conversationService) :
     private readonly IConversationService _conversationService = conversationService;
 
     [HttpGet]
-    public async Task<ActionResult<List<Conversation>>> GetAllConversations()
+    public async Task<ActionResult<List<ConversationDto>>> GetAllConversations()
     {
         var conversations = await _conversationService.GetAllConversations();
         return Ok(conversations);

@@ -1,12 +1,8 @@
-namespace ChatApp.Api.Models;
-
-public class Message
+namespace ChatApp.Api.DTOs.Messages
 {
+    public class MessageDto
+    {
     public int Id { get; set; }
-
-    public int ConversationId { get; set; }
-
-    public Conversation Conversation { get; set; } = null!;
 
     public int SenderId { get; set; }
 
@@ -15,4 +11,6 @@ public class Message
     public DateTimeOffset SentAt { get; set; }
 
     public DateTimeOffset? EditedAt { get; set; }
+
+    }
 }

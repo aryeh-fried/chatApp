@@ -9,11 +9,22 @@ namespace ChatApp.Api.Services
     {
         private readonly ChatAppDbContext _context = context;
 
-        public async Task<List<Conversation>> GetAllConversations()
+        public async Task<List<ConversationDto>> GetAllConversations()
         {
-            return await _context.Conversations
-            .Include(c => c.Participants)
-            .ToListAsync();
+            var conversations = await _context.Conversations
+                .Include(c => c.Participants)
+                .ToListAsync();
+
+            return conversations.Select(c => new ConversationDto
+            {
+                Id = c.Id,
+                Participants = c.Participants.Select(p => new UserDto
+                {
+                    Id = p.Id,
+                    UserName = p.UserName
+                }).ToList()
+            }).ToList();    
+            
         }
 
         public async Task<ConversationDto?> GetConversationById(int id)
